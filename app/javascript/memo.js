@@ -27,7 +27,7 @@ function memo(){
       list.insertAdjacentHTML("afterend", HTML);
       formText.value = "";//空の入力フォームを上書き
     };
-    e.preventDefault();
+    e.preventDefault();// 標準のイベントを止める
   });
 }
 window.addEventListener("load",memo);
