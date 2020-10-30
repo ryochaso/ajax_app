@@ -11,7 +11,8 @@ function check() {
       XHR.open("GET",`/posts/${postId}`, true);//リクエストの指定
       XHR.responseType = "json";//返すデータの指定
       XHR.send();//データ送信
-      XHR.onload = () => {if (XHR.status != 200) {
+      XHR.onload = () => {
+        if (XHR.status != 200) { //ステータスが200以外だとエラー nullでJSの処理終了
         alert(`Error ${XHR.status}: ${XHR.statusText}`);
         return null;          
         }

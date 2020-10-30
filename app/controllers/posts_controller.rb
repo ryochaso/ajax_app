@@ -3,7 +3,7 @@ class PostsController < ApplicationController
     @posts = Post.all.order(id: "DESC")
   end
 
-  def create #未読情報を保存
+  def create #未読情報を保存する
     post = Post.create(content: params[:content], checked: false)
     render json:{ post: post }# レスポンスをjsonに変更
   end
