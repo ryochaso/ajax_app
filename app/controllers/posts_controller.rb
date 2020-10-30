@@ -3,20 +3,20 @@ class PostsController < ApplicationController
     @posts = Post.all.order(id: "DESC")
   end
 
-
-  def create
-    Post.create(content: params[:content])
+  def create #未読情報を保存
+    post = Post.create(content: params[:content], checked: false)
+    render json:{ post: post }# レスポンスをjsonに変更
   end
-end
-#postアクション  既読した際
+ #postに対するアクション  既読した際
   def checked
-    post = post.find(params[:id])
+    post = Post.find(params[:id])
     if post.checked 
       post.update(checked: false) #既読の解除
-    else　
+    else
       post.update(checked: true) #既読にする
     end
     
-    item =post.find(params[:id])
+    item =Post.find(params[:id])
     render json: {post: item}
   end
+end
